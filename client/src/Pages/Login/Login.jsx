@@ -1,20 +1,24 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { createUser } from '../../Redux/actions/actions'
+
 
 const Login = () => {
+  const dispatch = useDispatch()
   return (
-    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto my-16 '>
+    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-screen '>
       <Formik
         initialValues={{ email: '', password: '' }}
         validate={values => {
           const errors = {};
-          if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+          if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
             errors.email = 'Invalid email address';
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -22,7 +26,7 @@ const Login = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+          <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-auto">
             <Form className='space-y-6'>
               <h5 className="text-xl font-medium text-gray-900 text-center">Login</h5>
               <div>

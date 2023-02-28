@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+.App{
+  background-image: url("https://st.depositphotos.com/2885805/4560/v/950/depositphotos_45603303-stock-illustration-logistic-icons-set.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  background-color: #fff;
+  
+} */

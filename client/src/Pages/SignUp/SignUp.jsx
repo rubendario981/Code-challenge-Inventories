@@ -1,10 +1,13 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { createUser } from '../../Redux/actions/actions'
 
 const SignUp = () => {
+  const dispatch = useDispatch()
   return (
-    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto my-16 '>
+    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-auto md:h-screen '>
       <Formik
         initialValues={{ email: '', password: '' }}
         validate={values => {
@@ -31,15 +34,18 @@ const SignUp = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={ async (values, { setSubmitting }) => {          
+          const response = await dispatch(createUser(values))
+          console.log("response form", response.status);
+          setSubmitting(false);
+          // setTimeout(() => {
+          //   alert(JSON.stringify(values, null, 2));
+          //   setSubmitting(false);
+          // }, 400);
         }}
       >
         {({ isSubmitting }) => (
-          <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+          <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-8 md:my-auto">
             <Form className='space-y-6'>
               <h5 className="text-2xl font-semibold text-gray-900 text-center">Sign up</h5>
               <div>

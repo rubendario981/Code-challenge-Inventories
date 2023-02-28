@@ -11,12 +11,19 @@ export function getUser(id) {
 	};
 }
 
-export function createUser() {
+export function createUser(data) {
 	return async (dispatch) => {
-		// const response = await axios.get(`${URL}/user`);
-		return dispatch({
-			type: "CREATE_USER",
-			payload: response.data,
-		});
+		try {
+			const response = await axios.post(`${URL}/user`, data);
+			dispatch({
+				type: "CREATE_USER",
+				payload: response.data,
+			});
+			console.log(response);
+			return response
+		} catch (error) {
+			console.error(error.response);
+			return error.response
+		}
 	};
 }
