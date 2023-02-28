@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Home = () => {
+  
+
   return (
-    <div>
-      pagina inicio
+    <div className='bg-red-200 flex w-1/2 mx-auto'>
+      Homepage
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Footer from "./component/Footer/Footer";
 import Header from "./component/Header/Header";
 import Login from "./Pages/Login/Login";
@@ -9,12 +9,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
       <Routes>
         <Route exact path={"/"} element={<Home /> } />
         <Route exact path={"/login"} element={<Login/>} />
       </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
       <Footer />
     </div>
   )
