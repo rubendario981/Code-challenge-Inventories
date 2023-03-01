@@ -1,39 +1,32 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const Profile = () => {
+  const user = useSelector(state => state.user)
   return (
-    
-<div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <div className="flex justify-end px-4 pt-4">
-        <button id="dropdownButton" data-dropdown-toggle="dropdown" className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-            <span className="sr-only">Open dropdown</span>
-            <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-        </button>
-
-        <div id="dropdown" className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-            <ul className="py-2" aria-labelledby="dropdownButton">
-            <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
-            </li>
-            <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export Data</a>
-            </li>
-            <li>
-                <a href="#" className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-            </li>
-            </ul>
+    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-auto md:h-screen '>
+      <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-auto">
+        <div className="flex items-center flex-col">
+          <img className="w-36 h-36 mb-3 rounded-full shadow-lg" src="https://i.pinimg.com/474x/6e/83/fb/6e83fb2265eaa85531871aa9c1325b37.jpg" alt={user.name} />
+          <h3 className="mb-1 text-3xl font-bold text-gray-900 ">{user.name}</h3>
         </div>
-    </div>
-    <div className="flex flex-col items-center pb-10">
-        <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image"/>
-        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-        <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
-        <div className="flex mt-4 space-x-3 md:mt-6">
-            <a href="#" className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add friend</a>
-            <a href="#" className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Message</a>
+        <div className="px-5 w-full mt-5">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Registred user data</h5>
+          <p className='mt-2 text-xl font-bold tracking-tight text-gray-900 '>Full Name</p>
+          <p className="mb-3 font-normal text-gray-700">{user.name}</p>
+          <p className='mt-2 text-xl font-bold tracking-tight text-gray-900 '>Email</p>
+          <p className="mb-3 font-normal text-gray-700">{user.email}</p>
+          <p className='mt-2 text-xl font-bold tracking-tight text-gray-900 '>Role</p>
+          <p className="mb-3 font-normal text-gray-700">{user.role}</p>
         </div>
+        <div className="flex justify-around mt-6 w-full">
+          <button onClick={() => Swal.fire("Comming soon", "Feature next will to be implemented")} className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'>Update profile</button>
+          <Link to={"/"} className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'>Home</Link>
+        </div>
+      </div>
     </div>
-</div>
 
   )
 }
