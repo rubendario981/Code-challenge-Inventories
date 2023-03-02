@@ -1,12 +1,13 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { createUser } from '../../Redux/actions/actions'
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../Redux/actions/actions'
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   return (
     <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-screen '>
       <Formik
@@ -19,10 +20,18 @@ const Login = () => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          const response = await dispatch(login(values))
+          if(response.status === 200){
+            Swal.fire("Welcome to our page", "", "success")
+            navigate("/")
+          } else if(response.status === 400 || response.status === 500){
+            Swal.fire("Error on try login", response.data, "info")
+          } else {
+            console.log(response);
+            Swal.fire("Error on try login", "Unknow ", "error")
+          }
+
+          setSubmitting(false);          
         }}
       >
         {({ isSubmitting }) => (

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createUser } from '../../Redux/actions/actions'
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
   const dispatch = useDispatch()
@@ -36,12 +37,16 @@ const SignUp = () => {
         }}
         onSubmit={ async (values, { setSubmitting }) => {          
           const response = await dispatch(createUser(values))
-          console.log("response form", response.status);
+          if(response.status === 200){
+            Swal.fire("Welcome to our page", "", "success")
+            navigate("/")
+          } else if(response.status === 400 || response.status === 500){
+            Swal.fire("Error on try signup", response.data, "info")
+          } else {
+            console.log(response);
+            Swal.fire("Error on try singup", "Unknow ", "error")
+          }
           setSubmitting(false);
-          // setTimeout(() => {
-          //   alert(JSON.stringify(values, null, 2));
-          //   setSubmitting(false);
-          // }, 400);
         }}
       >
         {({ isSubmitting }) => (
@@ -51,7 +56,7 @@ const SignUp = () => {
               <div>
                 <label htmlFor="name"
                   className="block mb-2 text-sm font-medium text-gray-900 ">
-                  Email address
+                  Fullname
                 </label>
                 <Field type="text" name="name"
                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
