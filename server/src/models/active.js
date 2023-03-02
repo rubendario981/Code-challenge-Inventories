@@ -15,10 +15,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     lat: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.STRING,
     },
     lng: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.STRING,
     },
     img: {
       type: DataTypes.STRING,

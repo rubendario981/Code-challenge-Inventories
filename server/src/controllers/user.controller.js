@@ -1,6 +1,6 @@
 const { User } = require("../db.js");
 const bcrypt = require("bcrypt");
-const { setToken, verifyToken } = require("../config/tokens.js")
+const { setToken } = require("../config/tokens.js")
 
 const signup = async (req, res) => {
   const { email } = req.body
