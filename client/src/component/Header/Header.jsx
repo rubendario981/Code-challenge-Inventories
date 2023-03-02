@@ -13,7 +13,7 @@ const Header = () => {
       </div>
 
       <div>
-        {user.name
+        {!user.name
           ? <div className="flex">            
             <Link className="bg-white rounded-full px-1 py-1 mr-1 mb-1" to={"/profile"}>
             <img src="https://i.pinimg.com/474x/6e/83/fb/6e83fb2265eaa85531871aa9c1325b37.jpg" className="border border-white rounded-full w-14 h-14" alt={user.name} />
