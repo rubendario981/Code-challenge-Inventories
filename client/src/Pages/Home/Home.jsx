@@ -3,13 +3,15 @@ import mapboxgl from "mapbox-gl";
 import TextArea from '../../component/CustomTextArea/TextArea';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2'
+import { createActive } from '../../Redux/actions/actions';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
 const Home = () => {
   const user = useSelector(state => state.user)
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   const [showMap, setShowMap] = useState(false)
   const mapContainer = useRef(null);
@@ -19,7 +21,7 @@ const Home = () => {
   const zoom = 8;
 
   useEffect(() => {
-    !user && (
+    !user && !user.id && (
       Swal.fire("Please login in the page", "For make a record you must be logged in the page", "info"),
       navigate("/login")
     )
@@ -30,7 +32,7 @@ const Home = () => {
       center: [lat, lng],
       zoom: zoom,
     });
-  }, [])
+  }, [user])
 
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
@@ -61,7 +63,7 @@ const Home = () => {
       </div>
 
       <Formik enableReinitialize={true}
-        initialValues={{ name: '', type: '', description: '', lat: lat, lng: lng }}
+        initialValues={{ userId: user.id, name: '', type: '', description: '', lat: lat, lng: lng }}
         validate={values => {
           const errors = {};
           if (!values.name) {
@@ -79,7 +81,12 @@ const Home = () => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
-          console.log("values form", values);
+          const response = await dispatch(createActive(values))
+          if(response.status === 200){
+            Swal.fire("Product created", "Product created successfully", "success")
+            navigate("/product")
+          }
+          else Swal.fire("Cannot be create product", "", "info")
           setSubmitting(false);
         }}
       >
@@ -103,8 +110,8 @@ const Home = () => {
                 </label>
                 <Field as="select" name="type" className="border bg-white border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                   <option defaultValue hidden>Select... </option>
-                  <option value="engine">Engine</option>
-                  <option value="pipes">Pipes</option>
+                  <option value="Engine">Engine</option>
+                  <option value="Pipes">Pipes</option>
                   <option value="Lights">Lights</option>
                 </Field>
                 <ErrorMessage name="type" className='text-sm font-semibold text-red-600' component="div" />
