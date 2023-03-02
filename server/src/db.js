@@ -51,9 +51,12 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User } = sequelize.models;
+const { User, Active } = sequelize.models;
+// Relationships here!!!
+User.hasMany(Active);
+Active.belongsTo(User);
 
-// Aca vendrian las relaciones
+
 
 module.exports = {
   ...sequelize.models, 
