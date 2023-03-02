@@ -1,10 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { logout } from '../../Redux/actions/actions'
 
 const Profile = () => {
   const user = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const exit = () =>{
+    dispatch(logout())
+    navigate("/login")
+  }
+
   return (
     <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-auto md:h-screen '>
       <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-auto">
@@ -22,7 +29,7 @@ const Profile = () => {
           <p className="mb-3 font-normal text-gray-700">{user.role}</p>
         </div>
         <div className="flex justify-around mt-6 w-full">
-          <button onClick={() => Swal.fire("Comming soon", "Feature next will to be implemented")} className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'>Update profile</button>
+          <button onClick={ exit } className='text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'>Logout</button>
           <Link to={"/"} className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'>Home</Link>
         </div>
       </div>
