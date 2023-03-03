@@ -9,7 +9,7 @@ const app = server.listen(port, () => {
 	console.log("Server listening at port", app.address().port);
 });
 
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
 	// Populate some data
 	await createUsers()
 	await createActives()

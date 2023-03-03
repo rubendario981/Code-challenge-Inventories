@@ -16,7 +16,7 @@ const Product = () => {
   }, [user])
 
   return (
-    <div className='flex flex-col lg:flex-row gap-5 h-screen '>
+    <div className='flex flex-col lg:flex-row gap-5 my-5 mx-6 md:h-screen'>
       <div className="w-11/12 lg:w-1/2 mx-auto p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-auto">
         <h3 className='text-xl text-center mb-3 font-bold leading-none text-gray-900'>List of records</h3>
         <table className="w-full text-sm text-left">
@@ -62,7 +62,7 @@ const Product = () => {
           ))}
         </table>
       </div>
-      <div className="w-11/12 lg:w-1/2 mx-auto h-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-auto">
+      <div className="flex flex-col w-11/12 lg:w-1/2 mx-auto h-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 pb-24 my-auto">
         <h3 className='text-xl text-center mb-3 font-bold leading-none text-gray-900'>Location inventories</h3>
         <MapGl locations={listActives}/>      
       </div>

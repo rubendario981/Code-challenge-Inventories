@@ -13,20 +13,20 @@ const Profile = () => {
   }
 
   return (
-    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-auto md:h-screen '>
-      <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-auto">
+    <div className='flex w-5/6 md:w-2/3 lg:w-1/3 mx-auto'>
+      <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 mt-8 mb-14">
         <div className="flex items-center flex-col">
-          <img className="w-36 h-36 mb-3 rounded-full shadow-lg" src="https://i.pinimg.com/474x/6e/83/fb/6e83fb2265eaa85531871aa9c1325b37.jpg" alt={user.name} />
-          <h3 className="mb-1 text-3xl font-bold text-gray-900 ">{user.name}</h3>
+          <img className="w-24 md:w-36 h-24 md:h-36 mb-3 rounded-full shadow-lg" src="https://i.pinimg.com/474x/6e/83/fb/6e83fb2265eaa85531871aa9c1325b37.jpg" alt={user.name} />
+          <h3 className="mb-1 text-xl md:text-3xl font-bold text-gray-900 ">{user.name}</h3>
         </div>
         <div className="px-5 w-full mt-5">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Registred user data</h5>
-          <p className='mt-2 text-xl font-bold tracking-tight text-gray-900 '>Full Name</p>
-          <p className="mb-3 font-normal text-gray-700">{user.name}</p>
-          <p className='mt-2 text-xl font-bold tracking-tight text-gray-900 '>Email</p>
-          <p className="mb-3 font-normal text-gray-700">{user.email}</p>
-          <p className='mt-2 text-xl font-bold tracking-tight text-gray-900 '>Role</p>
-          <p className="mb-3 font-normal text-gray-700">{user.role}</p>
+          <h5 className="mb-2 text-lg md:text-2xl font-bold tracking-tight text-gray-900 ">Registred user data</h5>
+          <p className='mt-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 '>Full Name</p>
+          <p className="mb-3 text-sm md:text-md font-normal text-gray-700">{user.name}</p>
+          <p className='mt-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 '>Email</p>
+          <p className="mb-3 text-sm md:text-md font-normal text-gray-700">{user.email}</p>
+          <p className='mt-2 text-lg md:text-xl font-bold tracking-tight text-gray-900 '>Role</p>
+          <p className="mb-3 text-sm md:text-md font-normal text-gray-700">{user.role}</p>
         </div>
         <div className="flex justify-around mt-6 w-full">
           <button onClick={ exit } className='text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'>Logout</button>

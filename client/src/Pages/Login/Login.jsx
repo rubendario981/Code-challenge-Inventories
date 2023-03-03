@@ -9,7 +9,7 @@ const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   return (
-    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-screen '>
+    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto mt-8 mb-24'>
       <Formik
         initialValues={{ email: '', password: '' }}
         validate={values => {

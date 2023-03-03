@@ -13,9 +13,9 @@ const Header = () => {
   }, [])
 
   return (
-    <div className="bg-blue-500 flex justify-between px-8 py-6 text-white items-center">
+    <div className="bg-blue-500 flex flex-col md:flex-row justify-between px-8 py-6 text-white items-center">
       <div onClick={() => navigate("/")} className="flex gap-6">
-        <img src="https://cdn-icons-png.flaticon.com/512/5351/5351614.png" className="w-12 cursor-pointer " alt="icon page" />
+        <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/supply-chain-management-1797372-1527037.png" className="w-12 cursor-pointer" alt="icon page" />
         <h3 className="text-2xl mt-2">Inventory team</h3>
       </div>
 
@@ -30,7 +30,7 @@ const Header = () => {
             <Link className="text-white hover:text-blue-800 hover:bg-white hover:p-3 rounded-lg" to={"/product"}>
               List actives registred
             </Link>
-            <Link className="bg-white rounded-full px-1 py-1 mr-1 mb-1" to={"/profile"}>
+            <Link className="bg-white rounded-full md:px-1 md:py-1 mr-1 mb-1" to={"/profile"}>
               <img src="https://i.pinimg.com/474x/6e/83/fb/6e83fb2265eaa85531871aa9c1325b37.jpg" className="border border-white rounded-full w-14 h-14" alt={user.name} />
             </Link>
           </div>

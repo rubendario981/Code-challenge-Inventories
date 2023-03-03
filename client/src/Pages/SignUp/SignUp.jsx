@@ -10,9 +10,9 @@ const SignUp = (createAdmin) => {
   const user = useSelector(state => state.user)
   
   return (
-    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto h-auto md:h-screen '>
+    <div className='flex w-5/6 md:w-2/3 lg:w-1/2 mx-auto my-5 '>
       <Formik
-        initialValues={{ name: '', email: '', password: '', password: '', passwd: '', role: "" }}
+        initialValues={{ name: '', email: '', password: '', passwd: '', role: "" }}
         validate={values => {
           const errors = {};
           if (!values.name) {
@@ -63,9 +63,9 @@ const SignUp = (createAdmin) => {
         }}
       >
         {({ isSubmitting }) => (
-          <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-8 md:my-auto">
-            <Form className='space-y-6'>
-              <h5 className="text-2xl font-semibold text-gray-900 text-center"> {createAdmin ? "Module to create an user (May be an admin)" : "Sign up"}</h5>
+          <div className="w-full md:w-10/12 mx-auto p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 my-8 md:my-auto">
+            <Form className='space-y-3'>
+              <h5 className="md:text-2xl font-semibold text-gray-900 text-center"> {createAdmin ? "Module to create an user (May be an admin)" : "Sign up"}</h5>
               <div>
                 <label htmlFor="name"
                   className="block mb-2 text-sm font-medium text-gray-900 ">
@@ -116,7 +116,7 @@ const SignUp = (createAdmin) => {
               </div>
               }
 
-              <div className='flex justify-around'>
+              <div className='flex flex-col sm:flex-row justify-around'>
                 <button className='text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-12 py-2.5 text-center mr-2 mb-2' type="submit" disabled={isSubmitting}>
                   {createAdmin ? `Create user` : "Signup"}
                 </button>

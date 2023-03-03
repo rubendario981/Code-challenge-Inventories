@@ -15,7 +15,7 @@ function App() {
   
   return (    
     <div className="App">
-      <img src="https://st.depositphotos.com/2885805/4560/v/950/depositphotos_45603303-stock-illustration-logistic-icons-set.jpg" className="absolute -z-10 h-screen w-screen" alt="backgroud" />
+      <img src="https://st.depositphotos.com/2885805/4560/v/950/depositphotos_45603303-stock-illustration-logistic-icons-set.jpg" className="absolute -z-10 h-screen w-screen mt-24" alt="backgroud" />
       <Header />
       <Routes>
         <Route exact path={"/"} element={<Home /> } />

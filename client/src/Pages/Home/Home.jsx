@@ -49,7 +49,7 @@ const Home = () => {
 
 
   return (
-    <div className='flex mx-auto md:h-screen '>
+    <div className='flex mx-auto md:my-12 '>
       <div className={showMap ? "absolute left-28 w-5/6 h-3/4 bg-white border border-gray-200 rounded-lg shadow" : "hidden"}>
         <h3 className="text-center bg-gray-700 text-white text-2xl py-4">Select location of product</h3>
         <div className="relative">
@@ -91,7 +91,7 @@ const Home = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <div className="w-11/12 sm:w-5/6 md:w-9/12 lg:w-7/12 mx-auto p-4 bg-white border border-gray-200 rounded-lg shadow-lg sm:p-6 md:p-8 my-8 md:my-auto">
+          <div className="w-11/12 sm:w-5/6 md:w-9/12 lg:w-5/12 mx-auto p-4 bg-white border border-gray-200 rounded-lg shadow-lg sm:p-6 md:p-8 my-8 md:my-auto">
             <Form className='space-y-6'>
               <h5 className="text-3xl font-bold text-gray-900 text-center">Register product</h5>
               <div>
