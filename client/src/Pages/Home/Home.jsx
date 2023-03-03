@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2'
 import { createActive } from '../../Redux/actions/actions';
+import { Marker } from 'react-map-gl'
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
@@ -37,13 +38,12 @@ const Home = () => {
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
     map.current.on("click", (e) => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
       var coordinates = e.lngLat;
-      new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML( <p>you clicked here:</p> + coordinates)
-
+      setLat(coordinates.lng.toFixed(4))
+      setLng(coordinates.lat.toFixed(4))
+      new mapboxgl.Popup().setLngLat(coordinates).setHTML(<Marker latitude={74.1} longitude={4.64}>
+        <div className='text-red-600 text-6xl font-bold'>I am heree!!</div>
+      </Marker>)
     });
   }, [lat, lng, map, mapContainer])
 
@@ -51,7 +51,7 @@ const Home = () => {
   return (
     <div className='flex mx-auto md:h-screen '>
       <div className={showMap ? "absolute left-28 w-5/6 h-3/4 bg-white border border-gray-200 rounded-lg shadow" : "hidden"}>
-          <h3 className="text-center bg-gray-700 text-white text-2xl py-4">Select location of product</h3>
+        <h3 className="text-center bg-gray-700 text-white text-2xl py-4">Select location of product</h3>
         <div className="relative">
           <div className='w-full h-96 text-center'>
             <div ref={mapContainer} className="w-full h-full" />
@@ -82,7 +82,7 @@ const Home = () => {
         }}
         onSubmit={async (values, { setSubmitting }) => {
           const response = await dispatch(createActive(values))
-          if(response.status === 200){
+          if (response.status === 200) {
             Swal.fire("Product created", "Product created successfully", "success")
             navigate("/product")
           }
@@ -110,7 +110,7 @@ const Home = () => {
                 </label>
                 <Field as="select" name="type" className="border bg-white border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                   <option defaultValue hidden>Select... </option>
-                  <option value="Engine">Engine</option>
+                  <option value="Engines">Engine</option>
                   <option value="Pipes">Pipes</option>
                   <option value="Lights">Lights</option>
                 </Field>
@@ -119,13 +119,13 @@ const Home = () => {
               <div>
                 <label htmlFor="coords"
                   className="block mb-2 text-sm font-medium text-gray-900 ">
-                  Coords location
+                  Coords location <small className='font-light text-gray-600'>(latitude and longitude)</small>
                 </label>
-                <div className='flex'>                  
+                <div className='flex'>
                   <Field type="text" name="lat" onFocus={() => setShowMap(true)}
-                    className="border border-gray-300 border-r-0 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />                 
+                    className="border border-gray-300 border-r-0 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                   <Field type="text" name="lng" onFocus={() => setShowMap(true)}
-                  className="border border-gray-300 border-l-0 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                    className="border border-gray-300 border-l-0 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
                 </div>
                 <ErrorMessage name="coords" className='text-sm font-semibold text-red-600' component="div" />
               </div>

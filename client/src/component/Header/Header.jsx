@@ -10,7 +10,6 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(identifyUser())    
-    dispatch(getRecordsById(user.id))
   }, [])
 
   return (
