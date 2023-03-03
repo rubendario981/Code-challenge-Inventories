@@ -17,7 +17,10 @@ server.use(morgan("dev"));
 server.use((req, res, next) => {
 	const allowedOrigins = [
 		'http://localhost:5173', 
-    'deployed-project'
+    'https://code-challenge-inventories.vercel.app',
+    'https://code-challenge-inventories.vercel.app/',
+    'https://code-challenge-inventories-git-master-rubendario981.vercel.app',
+    'https://code-challenge-inventories-git-master-rubendario981.vercel.app/'
 	];
 
 	const origin = req.headers.origin;
