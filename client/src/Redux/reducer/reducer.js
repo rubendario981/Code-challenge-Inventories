@@ -17,6 +17,10 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
+
+    case "CREATE_USER_ADMIN":
+      return { ...state };
+
     case "LOGOUT":
       return {
         ...state,

@@ -9,7 +9,7 @@ const Header = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(identifyUser())    
+    dispatch(identifyUser())
   }, [])
 
   return (
@@ -22,6 +22,11 @@ const Header = () => {
       <div>
         {user.name
           ? <div className="flex items-center gap-6">
+            {user.role === "Admin" &&
+              <Link className="text-white hover:text-blue-800 hover:bg-white hover:p-3 rounded-lg" to={"/create-admin"}>
+                Create user admin
+              </Link>
+            }
             <Link className="text-white hover:text-blue-800 hover:bg-white hover:p-3 rounded-lg" to={"/product"}>
               List actives registred
             </Link>

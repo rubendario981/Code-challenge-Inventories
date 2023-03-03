@@ -37,6 +37,21 @@ export function createUser(data) {
 	};
 }
 
+export function createUserAdmin(data, user) {
+	return async (dispatch) => {
+		try {
+			const response = await axios.post(`${URL}/user/create-admin`, {data, user});			
+			dispatch({
+				type: "CREATE_USER_ADMIN"
+			});
+			return response
+		} catch (error) {
+			console.error(error.response);
+			return error.response
+		}
+	};
+}
+
 export function identifyUser() {
 	return async (dispatch) => {
 		try {			

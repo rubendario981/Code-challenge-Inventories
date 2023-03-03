@@ -7,6 +7,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import Profile from "./Pages/Profile/Profile";
 import mapboxgl from "mapbox-gl";
 import Product from "./Pages/Product/Product";
+import CreateAdmin from "./Pages/SignUp/CreateAdmin";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
@@ -22,6 +23,7 @@ function App() {
         <Route exact path={"/signup"} element={<SignUp />} />
         <Route exact path={"/profile"} element={<Profile />} />
         <Route exact path={"/product"} element={<Product />} />
+        <Route exact path={"/create-admin"} element={<CreateAdmin />} />
       </Routes>
       <Footer />
     </div>
