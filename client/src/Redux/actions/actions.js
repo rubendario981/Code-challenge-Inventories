@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:3000";
+const URL = import.meta.env.VITE_URL_HOST || "http://localhost:3000";
 
 export function login(data) {
 	return async (dispatch) => {
