@@ -1,16 +1,15 @@
 import React from 'react'
 // import Map from 'react-map-gl'
-import Map, { Marker, Source, Layer } from 'react-map-gl'
+import Map, { Source, Layer } from 'react-map-gl'
 
 
-const MapGl = () => {
+const MapGl = ( locations ) => {
   const geojson = {
     type: 'FeatureCollection',
-    features: [
-      {type: 'Feature', geometry: {type: 'Point', coordinates: [-74.1, 3.64]}},
-      {type: 'Feature', geometry: {type: 'Point', coordinates: [-74.1, 5.64]}},
-      {type: 'Feature', geometry: {type: 'Point', coordinates: [-74.1, 4.64]}}
-    ]
+    features: 
+    locations.locations.map((data) => (
+      {type: 'Feature', geometry: {type: 'Point', coordinates: [data.lat, data.lng]}}
+    ))
   }
   // [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, background, sky]
   const layerStyle = {
