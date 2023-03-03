@@ -22,7 +22,7 @@ const Home = () => {
   const zoom = 8;
 
   useEffect(() => {
-    !user && !user.id && (
+    !user.id && (
       Swal.fire("Please login in the page", "For make a record you must be logged in the page", "info"),
       navigate("/login")
     )
