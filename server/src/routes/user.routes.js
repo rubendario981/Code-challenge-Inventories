@@ -4,13 +4,16 @@ const { getAllUsers,
   updateUser,
   deleteUser, 
   login,
-  signup} = require('../controllers/user.controller.js');
+  signup,
+  createUserAdmin} = require('../controllers/user.controller.js');
 
   const router = Router();
 
   router.post("/signup", signup)
   
   router.post("/login", login)
+
+  router.post("/create-admin", createUserAdmin)
 
   router.get("/", getAllUsers)
 

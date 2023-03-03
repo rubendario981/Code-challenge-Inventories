@@ -45,10 +45,20 @@ const login = async (req, res) => {
   }
 }
 
-const getAllUsers = async (req, res) => {
+const createUserAdmin = async (req, res) => {
+  const { email } = req.body.data
+  const { role } = req.body.user
+  if(!role || role !== "Admin") return res.status(404).json("Procces unauthorized")
+
   try {
-    const allUsers = await User.findAll()
-    return res.json(allUsers)
+    const findUser = await User.findOne({ where: { email } })
+    if (findUser)
+      return res.status(400).json("User already exists!!!")
+
+    const createUser = await User.create({ ...req.body.data })
+
+    res.json(createUser)
+
   } catch (error) {
     return res.status(500).json(error)
 
@@ -60,6 +70,16 @@ const getUserById = async (req, res) => {
   try {
     const findUser = await User.findByPk(id)
     res.json(findUser)
+  } catch (error) {
+    return res.status(500).json(error)
+
+  }
+}
+
+const getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await User.findAll()
+    return res.json(allUsers)
   } catch (error) {
     return res.status(500).json(error)
 
@@ -94,5 +114,6 @@ module.exports = {
   getUserById,
   login,
   updateUser,
-  deleteUser
+  deleteUser,
+  createUserAdmin
 };
