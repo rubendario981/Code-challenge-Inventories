@@ -1,11 +1,12 @@
-# Boiler plate
+# Code challenge - inventories
 
-This a package that include both, client and server side for any application
+This a package that include both, client and server side for solve the code challenge about inventories
 
-# Description Client side
+# Description Client side (tech stack)
 - React with javascript and vite
 - Redux
 - Tailwind
+- React router DOM
 
 # Description Server side
 - Server works with Nodejs
@@ -14,4 +15,4 @@ This a package that include both, client and server side for any application
 - Sequelize connected to a postgress database
 - jsonwebtoken
 
-This the base to start to work in you project. Enjoy it!!!
+More detail for each side in theirs documentation Readme.md
